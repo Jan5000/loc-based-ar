@@ -30,22 +30,28 @@
 <head>
 <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
 <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/howler@2.2.1/dist/howler.min.js"></script>
+<script src="script.js"></script>
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
   <a-scene vr-mode-ui="enabled: false" embedded arjs='debugUIEnabled: false;'>
     <a-assets>
       <a-asset-item id="letter" src="./assets/letter/circles-orbit.gltf"></a-asset-item>
+      <audio id="mysound" src="./assets/Horny-98-Radio-Edit.mp3" preload="auto"></audio>
     </a-assets>
     
-    <a-marker-camera type='pattern' url='pattern-marker-lips-100.patt'>
-      <a-entity gltf-model="#letter" position='0 0 0' animation-mixer sound="src: url(./assets/Horny-98-Radio-Edit.mp3); autoplay: true""/>
+    <a-marker-camera id="rig" type='pattern' url='pattern-marker-lips-100.patt'>
+      <a-entity gltf-model="#letter" animation-mixer audio="src: #mysound; loop: true;"/>
       
     </a-marker-camera>
 
   </a-scene>
 </body>
+
+<!-- <a-entity gltf-model="#letter" position='0 0 0' animation-mixer sound="src: url(./assets/Horny-98-Radio-Edit.mp3); autoplay: true""/>
+ -->
 
 <!-- <body style='margin : 0px; overflow: hidden;'>
   <a-scene artoolkit vr-mode-ui="enabled: false" embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
